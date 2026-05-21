@@ -37,12 +37,6 @@ Also make sure not to expose:
 - authentication data
 - sensitive email contents
 
-## Setup
-
-```bash
-npm install
-node index.js
-
 To install dependencies:
 
 ```bash
