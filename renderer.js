@@ -66,8 +66,6 @@ app.post("/render", async (req, res) => {
   el => el.innerHTML
 );
 
-console.log(emailHtml);
-
     // Save HTML for debugging
     fs.writeFileSync("email.html", emailHtml);
 
