@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const puppeteer = require("puppeteer");
 const fs = require("fs");
@@ -5,108 +6,76 @@ const fs = require("fs");
 const app = express();
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/render", async (req, res) => {
   const { emailId } = req.body;
 
   if (!emailId) {
-    return res.status(400).json({
-      error: "emailId is required"
-    });
+    return res.status(400).json({ error: "emailId is required" });
   }
 
+  let browser;
+
   try {
-    const browser = await puppeteer.launch({
-      headless: false,
+    browser = await puppeteer.launch({
+      headless: true,
       executablePath:
         "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
       userDataDir: "./chrome-data",
-      defaultViewport: null,
-
+      defaultViewport: {
+        width: 1280,
+        height: 720,
+      },
       args: [
-        "--start-maximized",
-        "--disable-blink-features=AutomationControlled"
-      ]
+        "--window-size=1920,1080",
+        "--disable-blink-features=AutomationControlled",
+      ],
     });
 
     const page = await browser.newPage();
 
-    // Hide webdriver flag
+    await page.setViewport({ width: 1920, height: 1080 });
+
     await page.evaluateOnNewDocument(() => {
-      Object.defineProperty(navigator, "webdriver", {
-        get: () => false,
-      });
+      Object.defineProperty(navigator, "webdriver", { get: () => false });
     });
 
-    // Open Gmail
-    await page.goto("https://mail.google.com/", {
-      waitUntil: "networkidle2"
+    await page.goto("https://mail.google.com/", { waitUntil: "networkidle2" });
+
+    await page.goto(`https://mail.google.com/mail/u/0/#all/${emailId}`, {
+      waitUntil: "networkidle2",
     });
 
-    // Open specific email
-    await page.goto(
-      `https://mail.google.com/mail/u/0/#inbox/${emailId}`,
-      {
-        waitUntil: "networkidle2"
-      }
-    );
+    await page.waitForSelector("div.ii.gt", { timeout: 15000 });
+    await new Promise((r) => setTimeout(r, 2000));
 
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    if (!fs.existsSync("public")) fs.mkdirSync("public");
 
-    // Scroll down a little
-    await page.evaluate(() => {
-      window.scrollBy(0, 500);
-    });
+    const fileName = `email-${emailId}.png`;
 
-    // Wait after scrolling
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    const emailHtml = await page.$eval(
-  "div.a3s",
-  el => el.innerHTML
-);
-
-    // Save HTML for debugging
-    fs.writeFileSync("email.html", emailHtml);
-
-
-    const renderPage = await browser.newPage();
-
-    await renderPage.setViewport({
-      width: 1280,
-      height: 720
-    });
-
-    // Put extracted HTML into clean page
-    await renderPage.setContent(emailHtml, {
-      waitUntil: "domcontentloaded"
-    });
-
-
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    await renderPage.screenshot({
-      path: "public/email.png",
+    await page.screenshot({
+      path: `public/${fileName}`,
       fullPage: false,
       clip: {
-        x: 0,
-        y: 0,
-        width: 1280,
-        height: 720
-      }
+        x: 230, // Horizontal coordinate (px)
+        y: 100, // Vertical coordinate (px)
+        width: 1000, // Width of the crop (px)
+        height: 800, // Height of the crop (px)
+      },
     });
 
-    await browser.close();
+    console.log("Screenshot saved:", fileName);
 
     res.json({
       success: true,
+      url: `https://api.zanidev.site/${fileName}`,
     });
-
   } catch (err) {
-    console.error(err);
-
-    res.status(500).json({
-      error: err.message
-    });
+    console.error("Render error:", err.message);
+    res.status(500).json({ error: err.message });
+  } finally {
+    if (browser) await browser.close();
   }
 });
 

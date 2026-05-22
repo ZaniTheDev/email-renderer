@@ -1,9 +1,11 @@
-2026/05/22-01:08:24.623 16e4 Reusing MANIFEST C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/05/22-01:08:24.623 16e4 Recovering log #302
-2026/05/22-01:08:24.630 16e4 Reusing old log C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/000302.log 
-2026/05/22-01:08:28.955 16e4 Compacting 1@1 + 1@2 files
-2026/05/22-01:08:29.013 16e4 Generated table #305@1: 266 keys, 1424679 bytes
-2026/05/22-01:08:29.013 16e4 Compacted 1@1 + 1@2 files => 1424679 bytes
-2026/05/22-01:08:29.017 16e4 compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/05/22-01:08:29.017 16e4 Delete type=2 #300
-2026/05/22-01:08:29.018 16e4 Delete type=2 #303
+2026/05/22-13:58:32.265 45b4 Reusing MANIFEST C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/05/22-13:58:32.266 45b4 Recovering log #464
+2026/05/22-13:58:32.274 45b4 Reusing old log C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/000464.log 
+2026/05/22-13:58:35.769 45b4 Compacting 1@0 + 2@1 files
+2026/05/22-13:58:35.825 45b4 Generated table #467@0: 1039 keys, 2318032 bytes
+2026/05/22-13:58:35.894 45b4 Generated table #468@0: 384 keys, 2329793 bytes
+2026/05/22-13:58:35.894 45b4 Compacted 1@0 + 2@1 files => 4647825 bytes
+2026/05/22-13:58:35.906 45b4 compacted to: files[ 0 2 2 0 0 0 0 ]
+2026/05/22-13:58:35.907 45b4 Delete type=2 #461
+2026/05/22-13:58:35.908 45b4 Delete type=2 #462
+2026/05/22-13:58:35.908 45b4 Delete type=2 #465

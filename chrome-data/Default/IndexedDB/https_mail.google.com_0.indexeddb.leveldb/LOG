@@ -1,15 +1,6 @@
-2026/05/22-01:53:26.952 381c Reusing MANIFEST C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/05/22-01:53:26.953 381c Recovering log #302
-2026/05/22-01:53:26.964 381c Reusing old log C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/000302.log 
-2026/05/22-01:53:27.112 3ae4 Level-0 table #308: started
-2026/05/22-01:53:27.303 3ae4 Level-0 table #308: 3194929 bytes OK
-2026/05/22-01:53:27.310 3ae4 Delete type=0 #302
-2026/05/22-01:53:33.479 381c Compacting 1@1 + 1@2 files
-2026/05/22-01:53:33.616 381c Generated table #309@1: 192 keys, 922873 bytes
-2026/05/22-01:53:33.616 381c Compacted 1@1 + 1@2 files => 922873 bytes
-2026/05/22-01:53:33.637 381c compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/05/22-01:53:33.639 381c Delete type=2 #305
-2026/05/22-01:53:33.639 381c Delete type=2 #308
-2026/05/22-01:53:44.205 3ae4 Level-0 table #311: started
-2026/05/22-01:53:44.270 3ae4 Level-0 table #311: 3213393 bytes OK
-2026/05/22-01:53:44.275 3ae4 Delete type=0 #307
+2026/05/22-15:39:33.863 34f4 Reusing MANIFEST C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/05/22-15:39:33.866 34f4 Recovering log #464
+2026/05/22-15:39:34.066 34f4 Reusing old log C:\Users\Hamzah\Desktop\project\email renderer\chrome-data\Default\IndexedDB\https_mail.google.com_0.indexeddb.leveldb/000464.log 
+2026/05/22-15:39:37.805 1fcc Level-0 table #471: started
+2026/05/22-15:39:37.938 1fcc Level-0 table #471: 3005428 bytes OK
+2026/05/22-15:39:37.945 1fcc Delete type=0 #464
