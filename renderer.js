@@ -8,6 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.post("/render", async (req, res) => {
+  return res.status(200).json({ error: "aasdsdsd" });
   const { emailId } = req.body;
 
   if (!emailId) {
