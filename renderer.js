@@ -7,7 +7,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.post("/render", async (req, res) => {
   const { emailId } = req.body;
 
@@ -34,15 +33,12 @@ app.post("/render", async (req, res) => {
     });
 
     const page = await browser.newPage();
-
     await page.setViewport({ width: 1920, height: 1080 });
-
     await page.evaluateOnNewDocument(() => {
       Object.defineProperty(navigator, "webdriver", { get: () => false });
     });
 
     await page.goto("https://mail.google.com/", { waitUntil: "networkidle2" });
-
     await page.goto(`https://mail.google.com/mail/u/0/#all/${emailId}`, {
       waitUntil: "networkidle2",
     });
